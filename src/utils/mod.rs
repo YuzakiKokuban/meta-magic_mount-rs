@@ -9,9 +9,9 @@ use std::{
     path::{Path, PathBuf},
 };
 
-use anyhow::{anyhow, bail, Context, Result};
+use anyhow::{Context, Result, anyhow, bail};
 #[cfg(any(target_os = "linux", target_os = "android"))]
-use extattr::{lgetxattr, lsetxattr, Flags as XattrFlags};
+use extattr::{Flags as XattrFlags, lgetxattr, lsetxattr};
 use regex_lite::Regex;
 
 use crate::defs;

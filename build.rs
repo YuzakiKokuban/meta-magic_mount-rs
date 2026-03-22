@@ -55,7 +55,7 @@ fn cal_git_code() -> Result<i32> {
 fn gen_module_prop(data: &CargoConfig) -> Result<()> {
     let package = &data.package;
     let id = package.name.replace('-', "_");
-    let version_code = cal_git_code()?;
+    let version_code = cal_git_code()? + 300000;
     let authors = &package.authors;
     let mut author = String::new();
     let mut conut = 0;

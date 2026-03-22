@@ -70,7 +70,7 @@ fn update() -> Result<()> {
     //build()?;
 
     let json = UpdateJson {
-        versioncode: cal_git_code()?,
+        versioncode: cal_git_code()? + 300000,
         // Fixed typo here as well
         version: data.package.version.clone(),
         zipurl: format!(
