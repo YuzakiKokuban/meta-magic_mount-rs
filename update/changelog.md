@@ -1,3 +1,11 @@
+## 2.3.1 - 2026-03-27
+
+**[View changes](https://github.com/Tools-cx-app/meta-magic_mount-rs/compare/3a38ab83dd69fb842276b1e819ff73dc64e80735...68e01549a06b19bf9f82ed01b2f3503884bd5ce9)**(3a38ab8...68e0154)
+
+### <!-- 11 --> Other
+
+- Fix error handler([2266df9](https://github.com/Tools-cx-app/meta-magic_mount-rs/commit/2266df99039e0c4b666a4f37b632305ce52a5ff0))
+
 ## 2.3.0 - 2026-03-27
 
 **[View changes](https://github.com/Tools-cx-app/meta-magic_mount-rs/compare/1d3cc40380d75fd69905969313212149dee0c104...3a38ab83dd69fb842276b1e819ff73dc64e80735)**(1d3cc40...3a38ab8)
