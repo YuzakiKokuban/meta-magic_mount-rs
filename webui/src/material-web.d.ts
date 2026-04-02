@@ -6,7 +6,11 @@
 
 import type { JSX } from "solid-js";
 
-type BaseProps = JSX.HTMLAttributes<HTMLElement>;
+type BaseProps = JSX.HTMLAttributes<HTMLElement> & {
+  [key: `attr:${string}`]: string | undefined;
+  [key: `on:${string}`]: any;
+  [key: `prop:${string}`]: unknown;
+};
 
 interface MdDialogProps extends BaseProps {
   open?: boolean;
@@ -14,13 +18,13 @@ interface MdDialogProps extends BaseProps {
 }
 
 interface MdTextFieldProps extends BaseProps {
-  label?: string;
-  value?: string;
-  error?: boolean;
+  "label"?: string;
+  "value"?: string;
+  "error"?: boolean;
   "supporting-text"?: string;
-  disabled?: boolean;
-  type?: string;
-  onInput?: (e: InputEvent) => void;
+  "disabled"?: boolean;
+  "type"?: string;
+  "onInput"?: (e: InputEvent) => void;
 }
 
 interface MdButtonProps extends BaseProps {
@@ -36,6 +40,7 @@ interface MdIconButtonProps extends BaseProps {
   type?: string;
   href?: string;
   target?: string;
+  title?: string;
   onClick?: (e: MouseEvent) => void;
 }
 

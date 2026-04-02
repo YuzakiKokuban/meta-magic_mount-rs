@@ -31,6 +31,7 @@
     "androidLabel": "Android",
     "kernelLabel": "Ядро",
     "selinuxLabel": "SELinux",
+    "loadError": "Не удалось загрузить состояние системы",
     "refresh": "Обновить"
   },
   "config": {

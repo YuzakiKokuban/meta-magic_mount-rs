@@ -29,6 +29,7 @@
     "androidLabel": "Android版本",
     "kernelLabel": "内核版本",
     "selinuxLabel": "SELinux",
+    "loadError": "加载系统状态失败",
     "refresh": "刷新"
   },
   "config": {

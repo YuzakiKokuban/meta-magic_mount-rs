@@ -26,9 +26,8 @@ try {
 
 const shouldUseMock = import.meta.env.DEV || !ksuExec;
 
-function shellEscapeDoubleQuoted(value: string): string {
-  return value.replace(/(["\\$`])/g, "\\$1");
-}
+const shellEscapeDoubleQuoted = (value: string): string =>
+  value.replace(/(["\\$`])/g, "\\$1");
 
 function stringToHex(str: string): string {
   const bytes = new TextEncoder().encode(str);
@@ -67,20 +66,18 @@ function normalizeConfigPayload(payload: Record<string, unknown>): AppConfig {
     umount:
       typeof payload.umount === "boolean"
         ? payload.umount
-        : disableUmount !== undefined
-          ? !disableUmount
-          : DEFAULT_CONFIG.umount,
+        : disableUmount === undefined
+          ? DEFAULT_CONFIG.umount
+          : !disableUmount,
   };
 }
 
-function createStandardConfigPayload(config: AppConfig) {
-  return {
-    mountsource: config.mountsource,
-    partitions: config.partitions,
-    ignoreList: config.ignoreList,
-    disable_umount: !config.umount,
-  };
-}
+const createStandardConfigPayload = (config: AppConfig) => ({
+  mountsource: config.mountsource,
+  partitions: config.partitions,
+  ignoreList: config.ignoreList,
+  disable_umount: !config.umount,
+});
 
 function normalizeModule(module: Record<string, unknown>): Module {
   const skipMount =
@@ -147,7 +144,9 @@ function formatBytes(bytes: number, decimals = 2): string {
 
 const RealAPI: AppAPI = {
   loadConfig: async () => {
-    const { errno, stdout, stderr } = await ksuExec!(`${PATHS.BINARY} show-config`);
+    const { errno, stdout, stderr } = await ksuExec!(
+      `${PATHS.BINARY} show-config`,
+    );
 
     if (errno === 0 && stdout.trim()) {
       return normalizeConfigPayload(JSON.parse(stdout));
@@ -157,7 +156,9 @@ const RealAPI: AppAPI = {
   },
 
   saveConfig: async (config) => {
-    const payload = stringToHex(JSON.stringify(createStandardConfigPayload(config)));
+    const payload = stringToHex(
+      JSON.stringify(createStandardConfigPayload(config)),
+    );
     const { errno, stderr } = await ksuExec!(
       `${PATHS.BINARY} save-config --payload ${payload}`,
     );
@@ -262,7 +263,7 @@ const RealAPI: AppAPI = {
           }
           if (Array.isArray(state.active_mounts)) {
             info.activeMounts = state.active_mounts.filter(
-              (value): value is string => typeof value === "string",
+              (value: unknown): value is string => typeof value === "string",
             );
           }
         }

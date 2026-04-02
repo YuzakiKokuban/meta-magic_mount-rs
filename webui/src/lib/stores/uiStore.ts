@@ -16,6 +16,7 @@ function createUiStore() {
   const L = createMemo(() => locales[lang()] ?? locales.en);
   const toasts = createMemo(() => {
     const t = toast();
+
     return t.visible ? [t] : [];
   });
 

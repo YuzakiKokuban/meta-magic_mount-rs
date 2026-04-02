@@ -31,6 +31,7 @@
     "androidLabel": "Android",
     "kernelLabel": "Kernel",
     "selinuxLabel": "SELinux",
+    "loadError": "Failed to load system status",
     "refresh": "Refresh"
   },
   "config": {

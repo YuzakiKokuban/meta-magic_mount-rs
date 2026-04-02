@@ -143,12 +143,14 @@ impl Config {
     }
 
     pub fn into_api(self, ignore_list: Vec<String>) -> ApiConfig {
+        let umount_enabled = self.umount_enabled();
+
         ApiConfig {
             moduledir: MODULE_PATH.trim_end_matches('/').to_string(),
             mountsource: self.mountsource,
             partitions: self.partitions,
-            umount: self.umount_enabled(),
-            disable_umount: !self.umount_enabled(),
+            umount: umount_enabled,
+            disable_umount: !umount_enabled,
             ignore_list,
         }
     }

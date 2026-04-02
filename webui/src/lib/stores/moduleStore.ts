@@ -12,23 +12,21 @@ function createModuleStore() {
   let pendingLoad: Promise<void> | null = null;
   let hasLoaded = false;
 
-  function normalizeModule(module: Module): Module {
-    return {
-      ...module,
-      mode: normalizeModuleMode(module.mode),
-      rules: {
-        ...module.rules,
-        default_mode: normalizeModuleMode(module.rules.default_mode),
-      },
-    };
-  }
+  const normalizeModule = (module: Module): Module => ({
+    ...module,
+    mode: normalizeModuleMode(module.mode),
+    rules: {
+      ...module.rules,
+      default_mode: normalizeModuleMode(module.rules.default_mode),
+    },
+  });
 
   const modeStats = createMemo((): ModeStats => {
     const stats = { overlay: 0, magic: 0 };
 
-    modules.forEach((module) => {
+    for (const module of modules) {
       if (!module.is_mounted) {
-        return;
+        continue;
       }
 
       const mode = normalizeModuleMode(module.mode);
@@ -37,7 +35,7 @@ function createModuleStore() {
       } else if (mode === "magic") {
         stats.magic++;
       }
-    });
+    }
 
     return stats;
   });

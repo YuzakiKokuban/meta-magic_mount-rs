@@ -29,6 +29,7 @@
     "androidLabel": "Android",
     "kernelLabel": "カーネル",
     "selinuxLabel": "SELinux",
+    "loadError": "システム状態の読み込みに失敗しました",
     "refresh": "更新"
   },
   "config": {

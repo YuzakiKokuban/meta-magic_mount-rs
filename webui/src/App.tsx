@@ -96,6 +96,7 @@ export default function App() {
 
       const next = new Set(prev);
       next.add(currentTab);
+
       return next;
     });
   });
@@ -184,7 +185,8 @@ export default function App() {
 
     const pendingRoutes = routes.filter((route) => route.id !== activeTab());
     let nextIndex = 0;
-    const preloadNextRoute = () => {
+
+    function preloadNextRoute() {
       const nextRoute = pendingRoutes[nextIndex++];
       if (!nextRoute) {
         return;
@@ -195,7 +197,7 @@ export default function App() {
       if (nextIndex < pendingRoutes.length) {
         preloadTimer = window.setTimeout(preloadNextRoute, 120);
       }
-    };
+    }
 
     preloadTimer = window.setTimeout(preloadNextRoute, 250);
 

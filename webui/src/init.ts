@@ -38,4 +38,4 @@ document.addEventListener("gesturestart", (event) => {
   event.preventDefault();
 });
 
-export {};
+export const materialWebInitApplied = true;

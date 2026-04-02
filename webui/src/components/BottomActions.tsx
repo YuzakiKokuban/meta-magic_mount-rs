@@ -42,9 +42,11 @@ export default function BottomActions(props: ParentProps) {
     if (!viewport) {
       return;
     }
+    const activeViewport = viewport;
 
     let rafId = 0;
-    const updateKeyboardInset = () => {
+
+    function updateKeyboardInset() {
       if (rafId) {
         return;
       }
@@ -53,23 +55,27 @@ export default function BottomActions(props: ParentProps) {
         rafId = 0;
         const inset = Math.max(
           0,
-          Math.round(window.innerHeight - viewport.height - viewport.offsetTop),
+          Math.round(
+            window.innerHeight -
+              activeViewport.height -
+              activeViewport.offsetTop,
+          ),
         );
         setKeyboardInset((prev) => (Math.abs(prev - inset) < 2 ? prev : inset));
       });
-    };
+    }
 
     updateKeyboardInset();
-    viewport.addEventListener("resize", updateKeyboardInset);
-    viewport.addEventListener("scroll", updateKeyboardInset);
+    activeViewport.addEventListener("resize", updateKeyboardInset);
+    activeViewport.addEventListener("scroll", updateKeyboardInset);
     window.addEventListener("orientationchange", updateKeyboardInset);
 
     onCleanup(() => {
       if (rafId) {
         window.cancelAnimationFrame(rafId);
       }
-      viewport.removeEventListener("resize", updateKeyboardInset);
-      viewport.removeEventListener("scroll", updateKeyboardInset);
+      activeViewport.removeEventListener("resize", updateKeyboardInset);
+      activeViewport.removeEventListener("scroll", updateKeyboardInset);
       window.removeEventListener("orientationchange", updateKeyboardInset);
     });
   });

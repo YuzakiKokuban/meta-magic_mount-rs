@@ -7,9 +7,9 @@
 /* @refresh reload */
 import { render } from "solid-js/web";
 
-import "./init";
 import App from "./App";
 
+import "./init";
 import "./app.css";
 import "./layout.css";
 
