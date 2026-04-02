@@ -4,10 +4,14 @@
  */
 
 .bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   background-color: var(--md-sys-color-surface-container);
   border-top: none;
-  padding-bottom: max(16px, var(--safe-area-inset-bottom, 0px));
+  box-shadow: none;
   padding-top: 16px;
   padding-left: 24px;
   padding-right: 24px;
@@ -15,11 +19,11 @@
   flex-shrink: 0;
   -ms-overflow-style: none;
   gap: 8px;
+  padding-bottom: max(
+    16px,
+    var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px))
+  );
   z-index: 100;
-  transition: padding-bottom 0.3s ease;
-}
-.bottom-nav.fix-padding {
-  padding-bottom: calc(max(16px, var(--safe-area-inset-bottom, 0px)) + 48px);
 }
 .bottom-nav::-webkit-scrollbar {
   display: none;
@@ -39,6 +43,9 @@
   cursor: pointer;
   border: none;
   padding: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
 }
 .icon-container {
   width: 64px;
@@ -47,13 +54,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transition:
+    background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+    width 0.2s;
+  pointer-events: none;
 }
 .nav-tab svg {
   width: 24px;
   height: 24px;
   fill: currentColor;
-  transition: all 0.2s;
+  transition:
+    fill 0.2s,
+    transform 0.2s;
 }
 .nav-tab.active .icon-container {
   background-color: var(--md-sys-color-secondary-container);
@@ -66,7 +78,7 @@
   fill: var(--md-sys-color-on-secondary-container);
 }
 .nav-tab.active .label {
-  font-weight: 700;
+  font-weight: 600;
 }
 .nav-tab:active .icon-container {
   opacity: 0.8;

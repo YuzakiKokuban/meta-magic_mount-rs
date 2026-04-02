@@ -52,9 +52,7 @@
     "loadError": "Failed to load config",
     "loadDefault": "Loaded default config",
     "saveSuccess": "Configuration saved",
-    "saveFailed": "Failed to save configuration",
-    "fixBottomNav": "Fix Bottom Nav",
-    "webuiLabel": "WebUI"
+    "saveFailed": "Failed to save configuration"
   },
   "modules": {
     "title": "Active Modules",

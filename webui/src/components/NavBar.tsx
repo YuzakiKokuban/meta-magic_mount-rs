@@ -6,7 +6,7 @@
 
 import { For, createEffect } from "solid-js";
 
-import { store } from "../lib/store";
+import { uiStore } from "../lib/stores/uiStore";
 import type { TabId } from "../lib/tabs";
 import { TABS } from "../lib/tabs";
 
@@ -37,10 +37,7 @@ export default function NavBar(props: NavBarProps) {
   });
 
   return (
-    <nav
-      class={`bottom-nav ${store.fixBottomNav ? "fix-padding" : ""}`}
-      ref={navContainer}
-    >
+    <nav class="bottom-nav" ref={navContainer}>
       <For each={TABS}>
         {(tab) => (
           <button
@@ -54,7 +51,7 @@ export default function NavBar(props: NavBarProps) {
                 <path d={tab.icon} />
               </svg>
             </div>
-            <span class="label">{store.L.tabs[tab.id]}</span>
+            <span class="label">{uiStore.L.tabs[tab.id]}</span>
           </button>
         )}
       </For>

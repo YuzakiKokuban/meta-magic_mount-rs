@@ -11,7 +11,9 @@ export const DEFAULT_CONFIG = {
   ignoreList: [],
 };
 export const PATHS = {
+  BINARY: "/data/adb/modules/magic_mount_rs/meta-mm",
   CONFIG: "/data/adb/magic_mount/config.toml",
+  IGNORE_LIST: "/data/adb/magic_mount/ignore.list",
   MODULE_ROOT: "/data/adb/modules",
   DAEMON_STATE: "/data/adb/magic_mount/run/daemon_state.json",
 };

@@ -135,9 +135,9 @@ impl Node {
         if let Ok(f) = fs::read_to_string(defs::IGNORE_LIST_PATH)
             && f.lines()
                 .any(|s| s == path.as_ref().to_str().unwrap_or_default())
-            {
-                return true;
-            }
+        {
+            return true;
+        }
 
         false
     }

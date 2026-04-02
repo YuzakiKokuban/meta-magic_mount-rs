@@ -52,9 +52,7 @@
     "loadError": "載定制不成",
     "loadDefault": "初制定矣",
     "saveSuccess": "定制存成",
-    "saveFailed": "存定制不成",
-    "fixBottomNav": "正底導之蔽",
-    "webuiLabel": "網界"
+    "saveFailed": "存定制不成"
   },
   "modules": {
     "title": "載錄",
